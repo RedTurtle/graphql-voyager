@@ -4,7 +4,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const voyager = require('graphql-voyager/middleware');
 
 if (!process.env.GRAPHQL_ENDPOINT) {
-  throw new Error('GRAPHQL_ENDPOINT environment variable not set!');
+  console.error('GRAPHQL_ENDPOINT environment variable not set!');
+  process.exit(1);
 }
 
 const app = express();
