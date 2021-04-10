@@ -15,9 +15,9 @@ const proxy = createProxyMiddleware({
   changeOrigin: true,
 });
 
-app.use('/api/dashboardapp/graphql', proxy);
+app.use(process.env.GRAPHQL_PATH || '/graphql', proxy);
 
-app.use('/', voyager.express({ endpointUrl: '/api/dashboardapp/graphql' }));
+app.use('/', voyager.express({ endpointUrl: process.env.GRAPHQL_PATH || '/graphql' }));
 
 const port = process.env.PORT || 5000;
 
